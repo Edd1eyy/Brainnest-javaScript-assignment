@@ -57,10 +57,17 @@ const game = function () {
   if (playerScore === cpuScore) {
     console.log(`⚠it's a Tie!⚠`);
     console.log(`😬Tie Breaker !😬`);
-    gameRound();
+    console.log(gameRound());
+    if (playerScore > cpuScore) console.log(`🎉Player Wins!🎉`);
+    if (playerScore < cpuScore) console.log(`🎉computer Wins!🎉`);
   }
   const restart = prompt("play again ? (yes/no)").toLocaleLowerCase();
-  if (restart === "yes") game();
+  if (restart === "yes") {
+    playerScore = 0;
+    cpuScore = 0;
+    game();
+  }
   if (restart === "no") return;
 };
-game();
+
+setTimeout(() => game(), 5000);
